@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="../static/images/malaria.ico">
+  <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../static/style.css">
+  <link rel="stylesheet" href="../static/main.css">
+  <title>Deteksi Penyakit Malaria</title>
+
+  <script>
+    function UPLOAD(){
+      document.getElementById('uploadform').submit();
+
+      var mainContent = document.getElementsByTagName('main')[0];
+      var form = document.getElementById('uploadform');
+      var loadingDiv = document.createElement('div');
+      var loadingText = document.createElement('H1');
+      loadingText.innerText = "MENGUNGGAH....";
+
+      form.parentElement.removeChild(form);
+      loadingDiv.classList.add('containermain');
+      loadingDiv.appendChild(loadingText);
+      mainContent.appendChild(loadingDiv);
+    }
+  </script>
+
+</head>
+<body>
+
+  <header>
+    <div id="judul">
+      <img src="../static/images/logoo.png" alt="Malaria Detector Icon" style="height: 60px;">
+    </div>
+    <div id="navigasi">
+      <a href="{{ url_for('index') }}">Deteksi</a> <!-- Misalnya, jika ini untuk halaman utama -->
+      <a href="{{ url_for('dokumentasi') }}">Dokumentasi</a>
+      <a href="{{ url_for('tentang') }}">Tentang</a>
+  </div>
+  </header>
+
+  <main>
+    <p id="tittlemain">Deteksi Penyakit Malaria</p>
+    <div id="submain">Unggah gambar sel darah Anda untuk mendeteksi infeksi malaria:</div>
+    <form method="post" action="" id="uploadform" enctype="multipart/form-data">
+      <label for="images" class="containermain">
+        <span class="drop-title">Seret gambar di sini atau klik untuk mengunggah</span>
+        <input type="file" name="file" id="images" accept="image/*" onchange="UPLOAD()" required>
+      </label>  
+    </form>
+  </main>
+
+  <footer>
+    Copyright &copy; 2024. Malaria Detector. Hak Cipta Dilindungi.
+  </footer>
+
+</body>
+</html>

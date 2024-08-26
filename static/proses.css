@@ -1,0 +1,113 @@
+/* General header styling */
+header {
+    background-color: #4CAF50; /* Green background */
+    padding: 10px 20px; /* Padding around the header */
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between the logo and navigation */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Styling for the logo container */
+#judul {
+    display: flex;
+    align-items: center;
+}
+
+/* Logo image styling */
+#judul img {
+    height: 50px; /* Height of the logo */
+    width: auto;
+}
+
+/* Navigation bar styling */
+#navigasi a {
+    color: white; /* White text color */
+    text-decoration: none; /* Remove underline from links */
+    font-size: 18px; /* Font size for links */
+    margin-left: 20px; /* Space between each menu item */
+    transition: background-color 0.3s ease; /* Smooth background change on hover */
+    padding: 8px 15px;
+}
+
+/* Hover effect for navigation links */
+#navigasi a:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+    border-radius: 5px; /* Rounded corners on hover */
+}
+
+/* Main content styling */
+main {
+    background-color: #ffffff; /* White background for main content */
+    min-height: 80%;
+    display: flex;
+    flex-direction: column;
+    padding: 2% 10%;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+/* Main title styling */
+p#tittlemain {
+    font-size: 2rem; /* Font size for main title */
+    font-weight: 900; /* Bold font weight */
+    color: #2C3E50; /* Dark color for contrast */
+    margin-bottom: 20px;
+}
+
+/* Sub-title styling */
+div#submain {
+    font-size: 1.2rem; /* Font size for sub-title */
+    margin-bottom: 30px;
+    color: #7F8C8D; /* Medium gray color */
+    text-align: center; /* Center the text */
+}
+
+/* File input styling */
+#upload-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.upload-label {
+    font-size: 1.2rem;
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.upload-button {
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* Responsive design for smaller screens */
+@media only screen and (max-width: 659px) {
+    p#tittlemain {
+        font-size: 1.5rem; /* Adjusted font size for mobile */
+    }
+
+    div#submain {
+        font-size: 1rem; /* Adjusted font size for mobile */
+    }
+
+    #upload-form {
+        width: 100%;
+    }
+
+    .upload-label, .upload-button {
+        width: 100%;
+        text-align: center;
+    }
+}

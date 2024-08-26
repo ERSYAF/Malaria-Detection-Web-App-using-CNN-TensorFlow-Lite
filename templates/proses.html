@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="dicoding:email" content="ykbintang07@gmail.com">
+  <link rel="icon" type="image/x-icon" href="../static/images/groco.ico">
+  <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../static/style.css">
+  <link rel="stylesheet" href="../static/proses.css">
+  <title>Deteksi Penyakit Malaria</title>
+</head>
+<body>
+
+  <header>
+    <div id="judul">
+      <img src="../static/images/icon.png" alt="icon">
+    </div>
+    <div id="navigasi">
+      <a href="index.html" id="home">Home</a>
+      <a href="dokumentasi.html" id="dokumentasi">Dokumentasi</a>
+      <a href="tentang.html" id="tentang">Tentang</a>
+    </div>
+  </header>
+
+  <main>
+    <p id="tittlemain">Deteksi Malaria</p>
+    <div id="submain">Untuk mendeteksi penyakit malaria, silahkan unggah gambar sampel darah Anda. Proses akan dimulai setelah Anda memilih file untuk diunggah.</div>
+    <form id="upload-form" enctype="multipart/form-data" method="POST" action="/upload">
+      <input type="file" id="images" name="images" accept="image/*" required>
+      <label for="images" class="upload-label">Pilih Gambar</label>
+      <button type="submit" class="upload-button">Upload</button>
+    </form>
+  </main>
+
+  <footer>
+    Copyright &copy; 2022. Groco. All Rights Reserved.
+  </footer>
+
+</body>
+</html>

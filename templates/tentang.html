@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang - Malaria Detection</title>
+    <link rel="stylesheet" href="../static/tentang.css">
+</head>
+<body>
+    <header>
+        <div id="judul">
+            <img src="{{ url_for('static', filename='images/logoo.png') }}" alt="Malaria Detector Icon">
+        </div>
+        <div id="navigasi">
+            <a href="{{ url_for('index') }}">Beranda</a>
+            <a href="{{ url_for('dokumentasi') }}">Dokumentasi</a>
+            <a href="{{ url_for('tentang') }}">Tentang</a>
+        </div>
+    </header>
+    <main>
+        <h1>Tentang Aplikasi Deteksi Malaria</h1>
+        <section class="content">
+            <img src="{{ url_for('static', filename='images/developer.jpg') }}" alt="Era Syafina" class="developer-photo">
+            <p>Aplikasi Deteksi Malaria dikembangkan untuk membantu mendeteksi infeksi malaria pada gambar daun dengan menggunakan model TensorFlow Lite.</p>
+        </section>
+        <section class="developer-info">
+            <h2>Pengembang:</h2>
+            <p>Nama: Era Syafina</p>
+            <p>Email: <a href="mailto:erasyafina25@gmail.com">erasyafina25@gmail.com</a></p>
+            <p>Website: <a href="https://ersyaf.carrd.co/">ersyaf.carrd.co</a></p>
+        </section>
+        <a href="{{ url_for('index') }}" class="back-link">Kembali ke Beranda</a>
+    </main>
+</body>
+</html>

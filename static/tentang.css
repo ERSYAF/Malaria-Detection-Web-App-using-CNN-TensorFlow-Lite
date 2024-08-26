@@ -1,0 +1,131 @@
+/* General header styling */
+header {
+    background-color: #4CAF50; /* Green background */
+    padding: 10px 20px; /* Padding around the header */
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between the logo and navigation */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Styling for the logo container */
+#judul {
+    display: flex;
+    align-items: center;
+}
+
+/* Logo image styling */
+#judul img {
+    height: 60px; /* Height of the logo */
+    width: auto;
+}
+
+/* Navigation bar styling */
+#navigasi {
+    display: flex;
+    align-items: center;
+}
+
+/* Navigation links styling */
+#navigasi a {
+    color: white; /* White text color */
+    text-decoration: none; /* Remove underline from links */
+    font-size: 18px; /* Font size for links */
+    padding: 8px 15px;
+    transition: background-color 0.3s ease; /* Smooth background change on hover */
+    margin-left: 20px; /* Space between each menu item */
+}
+
+/* Hover effect for navigation links */
+#navigasi a:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+    border-radius: 5px; /* Rounded corners on hover */
+}
+
+/* Main content styling */
+main {
+    background-color: #ffffff; /* White background for main content */
+    min-height: 80%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+    margin: 20px auto;
+    border-radius: 8px;
+    max-width: 800px; /* Center content with max width */
+}
+
+/* Main title styling */
+h1 {
+    font-size: 2rem; /* Font size for main title */
+    font-weight: 900; /* Bold font weight */
+    color: #2C3E50; /* Dark color for contrast */
+    margin-bottom: 20px;
+    text-align: center; /* Centered text */
+}
+
+/* Section content styling */
+.content {
+    margin-bottom: 20px;
+}
+
+.developer-photo {
+    width: 100%; /* Responsive image width */
+    max-width: 300px; /* Max width for the image */
+    border-radius: 8px; /* Rounded corners for the image */
+    display: block;
+    margin: 0 auto; /* Center image */
+}
+
+/* Developer info styling */
+.developer-info {
+    text-align: center; /* Centered text */
+}
+
+.developer-info p {
+    font-size: 1.2rem; /* Font size for information */
+    margin: 10px 0;
+}
+
+/* Link styling */
+a {
+    color: #4CAF50; /* Green color for links */
+    text-decoration: none; /* Remove underline from links */
+    font-weight: bold;
+}
+
+/* Link hover effect */
+a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Back link styling */
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease; /* Smooth background color change */
+}
+
+.back-link:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+}
+
+/* Responsive design for smaller screens */
+@media only screen and (max-width: 659px) {
+    main {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 1.5rem; /* Smaller font size for main title */
+    }
+
+    .developer-info p {
+        font-size: 1rem; /* Smaller font size for paragraphs */
+    }
+}

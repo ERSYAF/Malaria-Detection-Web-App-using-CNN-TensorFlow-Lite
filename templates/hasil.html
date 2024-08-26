@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="dicoding:email" content="ykbintang07@gmail.com">
+  <link rel="icon" type="image/x-icon" href="../static/images/groco.ico">
+  <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../static/style.css">
+  <link rel="stylesheet" href="../static/hasil.css">
+  <title>Hasil Deteksi Malaria</title>
+</head>
+<body>
+
+  <header>
+    <div id="judul">
+      <img src="../static/images/icon.png" alt="icon">
+    </div>
+    <nav id="navigasi">
+      <a href="/" id="deteksi">Deteksi</a>
+      <a href="dokumentasi.html" id="dokumentasi">Dokumentasi</a>
+      <a href="tentang.html" id="tentang">Tentang</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1 id="tittlemain">Hasil Deteksi Malaria</h1>
+    <p id="submain">Berdasarkan hasil identifikasi gambar yang Anda unggah, analisis sistem kami menunjukkan bahwa sampel darah Anda dapat diklasifikasikan ke kategori:</p>
+    <div class="containermain">
+      <section id="container1">
+        <div id="containernama">
+          <i class="fa fa-ticket"></i>
+          <h2 id="namapenyakit">{{ penyakit }}</h2>
+        </div>
+        <img id="imageinput" src="{{ imagepath }}" alt="Gambar Hasil Input">
+      </section>
+      
+      <section id="container2">
+        <h3>Tips</h3>
+        <p id="tips1">{{ tips1 }}</p>
+        <p id="tips2">{{ tips2 }}</p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2022 Groco. All Rights Reserved.
+  </footer>
+
+</body>
+</html>

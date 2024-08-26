@@ -1,0 +1,179 @@
+* {
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #eef5f9;
+    color: #333;
+}
+
+header {
+    background-color: #4CAF50;  /* Hijau untuk tema kesehatan */
+    display: flex;
+    flex-direction: row;
+    padding: 15px;
+    padding-left: 2vw;
+    align-items: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header div {
+    display: block;
+    height: auto;
+}
+
+#navigasi a {
+    margin-right: 7%;
+    font-size: 1.2rem;
+    color: white;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+#navigasi a:hover {
+    color: #ffeb3b;  /* Warna hover kuning cerah */
+}
+
+main {
+    background-color: #ffffff;
+    height: fit-content;
+    min-height: 80%;
+    display: flex;
+    flex-direction: column;
+    padding: 2% 10%;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+a {
+    text-decoration: none;
+    color: #4CAF50;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #2E7D32;  /* Warna hover hijau lebih gelap */
+}
+
+#tittlemain {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #2C3E50;
+    margin-bottom: 20px;
+}
+
+#submain {
+    font-size: 1.2rem;
+    height: auto;
+    margin-bottom: 30px;
+    color: #7F8C8D;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    background-color: #F2F2F2;
+    padding: 15px;
+    color: #7F8C8D;
+    font-size: 0.9rem;
+    border-top: 1px solid #E0E0E0;
+    margin-top: auto;
+}
+
+label.containermain {
+    display: block;
+    margin: 0 auto;
+    padding: 40px;
+    text-align: center;
+    background-color: #ecf0f1;
+    border: 2px dashed #4CAF50;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+label.containermain:hover {
+    background-color: #d5e8d4;
+    border-color: #2E7D32;  /* Warna border saat hover */
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.drop-title {
+    font-size: 1.2rem;
+    color: #7F8C8D;
+}
+
+.result {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 1.5rem;
+    color: #2C3E50;
+}
+
+@media only screen and (min-width: 660px) {
+
+    header a {
+        position: relative;
+        top: 40%;
+    }
+    
+    #judul {
+        margin-top: 0.75%;
+        width: 15vw;
+        margin-right: 50vw;
+    }
+    
+    #judul img {
+        width: 50%;
+        display: block;
+        margin: auto;
+    }
+    
+    #navigasi {
+        margin-top: 0.7%;
+        width: 30vw;
+    }
+}
+
+@media only screen and (max-width: 659px) {
+
+    header {
+        height: 8vh;
+    }
+
+    #judul img {
+        height: 50%;
+        display: block;
+        margin-top: 20%;
+    }
+
+    #navigasi {
+        margin-left: 30%;
+        margin-top: 4.5%;
+        width: 60%;
+    }
+
+    footer {
+        padding-left: 0;
+        text-align: center;
+        margin-top: auto;
+    }
+
+    #tittlemain {
+        font-size: 1.5rem;
+    }
+
+    #submain {
+        font-size: 1.2rem;
+    }
+}
