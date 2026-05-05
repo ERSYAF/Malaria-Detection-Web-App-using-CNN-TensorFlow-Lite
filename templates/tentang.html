@@ -9,19 +9,19 @@
 <body>
     <header>
         <div id="judul">
-            <img src="{{ url_for('static', filename='images/logoo.png') }}" alt="Malaria Detector Icon">
+            <!-- <img src="{{ url_for('static', filename='images/logoo.png') }}" alt="Malaria Detector Icon"> -->
         </div>
         <div id="navigasi">
-            <a href="{{ url_for('index') }}">Beranda</a>
-            <a href="{{ url_for('dokumentasi') }}">Dokumentasi</a>
-            <a href="{{ url_for('tentang') }}">Tentang</a>
+            <a href="{{ url_for('index') }}">Detection</a>
+            <a href="{{ url_for('dokumentasi') }}">About</a>
+            <a href="{{ url_for('tentang') }}">Profile</a>
         </div>
     </header>
     <main>
         <h1>Tentang Aplikasi Deteksi Malaria</h1>
         <section class="content">
-            <img src="{{ url_for('static', filename='images/developer.jpg') }}" alt="Era Syafina" class="developer-photo">
-            <p>Aplikasi Deteksi Malaria dikembangkan untuk membantu mendeteksi infeksi malaria pada gambar daun dengan menggunakan model TensorFlow Lite.</p>
+            <img src="{{ url_for('static', filename='images/fgr.jpg') }}" alt="Era Syafina" class="developer-photo">
+            <p> <center>Aplikasi Deteksi Malaria dikembangkan untuk membantu mendeteksi infeksi malaria pada gambar daun dengan menggunakan model TensorFlow Lite.</center></p>
         </section>
         <section class="developer-info">
             <h2>Pengembang:</h2>
@@ -31,5 +31,9 @@
         </section>
         <a href="{{ url_for('index') }}" class="back-link">Kembali ke Beranda</a>
     </main>
+
+    <footer>
+        Copyright &copy; 2022. Groco. All Rights Reserved.
+      </footer>
 </body>
 </html>

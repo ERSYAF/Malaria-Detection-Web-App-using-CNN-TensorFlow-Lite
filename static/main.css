@@ -1,84 +1,481 @@
-#formmain {
-  margin-left: 20%;
-  height: auto;
-  width: 60%;
-  max-width: 600px;
-  padding: 20px;
-  background-color: #f3f5f1;
-  border-radius: 12px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-}
+/* =============================================
+   MALARIADETECT — main.css
+   Page Layout & Upload Component Styles
+   ============================================= */
 
+/* ---- Main wrapper ---- */
 main {
-  padding: 4% 10% 13%;
-}
-
-main form {
-  width: 100%;
-  max-width: 500px;
+  flex: 1;
+  max-width: 860px;
   margin: 0 auto;
+  padding: 4rem 2rem 5rem;
+  width: 100%;
 }
 
-.containermain {
-  margin-top: 2.3%;
-  display: flex;
-  gap: 10px;
-  flex-direction: column;
-  justify-content: center;
+/* =============================================
+   HERO SECTION
+   ============================================= */
+.hero-section {
+  text-align: center;
+  margin-bottom: 3.5rem;
+  animation: fadeUp 0.5s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-label {
+  display: inline-flex;
   align-items: center;
-  padding: 40px;
-  border-radius: 10px;
-  border: 2px dashed #4CAF50;
-  color: #333;
-  background-color: white;
+  gap: 7px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--green-700);
+  background: var(--green-50);
+  border: 1px solid var(--green-100);
+  padding: 5px 14px;
+  border-radius: var(--radius-full);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.2px;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 600;
+  color: var(--slate-900);
+  line-height: 1.2;
+  margin-bottom: 1.2rem;
+  letter-spacing: -0.5px;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--green-700);
+}
+
+.hero-desc {
+  font-size: 16px;
+  color: var(--slate-500);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* =============================================
+   UPLOAD SECTION
+   ============================================= */
+.upload-section {
+  margin-bottom: 3.5rem;
+  animation: fadeUp 0.5s 0.1s ease both;
+}
+
+.dropzone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 280px;
+  background: var(--white);
+  border: 2px dashed var(--slate-200);
+  border-radius: var(--radius-xl);
   cursor: pointer;
-  transition: background .2s ease-in-out, border .2s ease-in-out;
+  transition: 
+    border-color var(--transition),
+    background var(--transition),
+    box-shadow var(--transition),
+    transform var(--transition);
+  position: relative;
+  overflow: hidden;
 }
 
-.containermain:hover {
-  background: #e0f2f1;
-  border-color: #388e3c;
+.dropzone::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(34, 197, 94, 0.04) 0%, transparent 70%);
+  pointer-events: none;
 }
 
-.containermain:hover .drop-title {
-  color: #388e3c;
+.dropzone:hover {
+  border-color: var(--green-400);
+  background: var(--green-50);
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.08);
+  transform: translateY(-1px);
+}
+
+.dropzone.dragover {
+  border-color: var(--green-500);
+  background: var(--green-50);
+  box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.12);
+  transform: scale(1.01);
+}
+
+.dropzone.has-file {
+  border-style: solid;
+  border-color: var(--green-400);
+}
+
+/* File input hidden */
+.dropzone input[type="file"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* Drop placeholder */
+.drop-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 2rem;
+  gap: 0;
+  transition: opacity var(--transition);
+}
+
+/* Upload icon */
+.drop-icon {
+  width: 72px;
+  height: 72px;
+  background: var(--green-50);
+  border: 1px solid var(--green-100);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--green-600);
+  margin-bottom: 1.4rem;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.dropzone:hover .drop-icon {
+  background: var(--green-100);
+  transform: translateY(-3px);
+}
+
+.drop-icon svg {
+  width: 32px;
+  height: 32px;
 }
 
 .drop-title {
-  color: #333;
-  font-size: 20px;
-  font-weight: bold;
-  text-align: center;
-  transition: color .2s ease-in-out;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--slate-800);
+  margin-bottom: 6px;
 }
 
-main form {
+.drop-hint {
+  font-size: 14px;
+  color: var(--slate-400);
+  margin-bottom: 1.5rem;
+}
+
+/* Format badges */
+.drop-formats {
+  display: flex;
+  gap: 6px;
+}
+
+.drop-formats span {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--slate-500);
+  background: var(--slate-100);
+  border: 1px solid var(--slate-200);
+  padding: 3px 9px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.5px;
+}
+
+/* Image preview */
+.img-preview {
   width: 100%;
-  height: auto;
-  display: block;
+  height: 280px;
+  object-fit: contain;
+  border-radius: calc(var(--radius-xl) - 2px);
+  padding: 1rem;
+  background: var(--slate-50);
 }
 
-@media only screen and (max-width: 659px) {
-  #formmain {
-    margin-left: 0;
-    width: 90%;
-    padding: 15px;
-  }
+/* =============================================
+   STEPS SECTION
+   ============================================= */
+.steps-section {
+  animation: fadeUp 0.5s 0.2s ease both;
+}
 
+.steps-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--slate-400);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.step-card {
+  background: var(--white);
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  position: relative;
+  transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+}
+
+.step-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  border-color: var(--slate-300);
+}
+
+.step-num {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--slate-300);
+  letter-spacing: 0.5px;
+  margin-bottom: 1rem;
+}
+
+.step-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.step-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.step-icon.green {
+  background: var(--green-50);
+  color: var(--green-600);
+  border: 1px solid var(--green-100);
+}
+
+.step-icon.blue {
+  background: var(--blue-50);
+  color: var(--blue-600);
+  border: 1px solid var(--blue-100);
+}
+
+.step-icon.amber {
+  background: var(--amber-50);
+  color: var(--amber-600);
+  border: 1px solid var(--amber-100);
+}
+
+.step-card h3 {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--slate-800);
+  margin-bottom: 6px;
+}
+
+.step-card p {
+  font-size: 13px;
+  color: var(--slate-500);
+  line-height: 1.6;
+}
+
+/* =============================================
+   RESULT PAGE (untuk halaman hasil deteksi)
+   ============================================= */
+.result-section {
+  animation: fadeUp 0.5s ease both;
+}
+
+.result-card {
+  background: var(--white);
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.result-header {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--slate-100);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.result-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--slate-800);
+}
+
+.result-body {
+  padding: 2rem;
+}
+
+.result-image-wrap {
+  background: var(--slate-50);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  aspect-ratio: 4/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.result-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Status badge - positive */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+}
+.status-badge.positive {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+.status-badge.negative {
+  background: var(--green-50);
+  color: var(--green-700);
+  border: 1px solid var(--green-100);
+}
+
+/* Confidence bar */
+.confidence-wrap {
+  margin-top: 1.5rem;
+}
+.confidence-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--slate-500);
+  margin-bottom: 8px;
+}
+.confidence-bar {
+  height: 6px;
+  background: var(--slate-100);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+.confidence-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--green-400), var(--green-600));
+  border-radius: var(--radius-full);
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Back button */
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--slate-600);
+  background: var(--white);
+  border: 1px solid var(--slate-200);
+  padding: 9px 18px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition), color var(--transition);
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+}
+.btn-back:hover {
+  background: var(--slate-50);
+  border-color: var(--slate-300);
+  color: var(--slate-800);
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 720px) {
   main {
-    padding: 4% 5% 13%;
+    padding: 2.5rem 1.2rem 4rem;
   }
 
-  .containermain {
-    padding: 30px;
+  .hero-section {
+    margin-bottom: 2.5rem;
   }
 
-  #submain {
-    font-size: 1.3rem;
-    width: 100%;
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 
-  main {
-    height: auto;
+  .step-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.2rem;
+  }
+
+  .step-num {
+    display: none;
+  }
+
+  .step-icon {
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  .step-card h3 {
+    margin-bottom: 4px;
+  }
+
+  .dropzone {
+    min-height: 240px;
+  }
+
+  .drop-placeholder {
+    padding: 2rem 1.5rem;
+  }
+
+  .drop-icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .drop-icon svg {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .drop-title {
+    font-size: 15px;
   }
 }

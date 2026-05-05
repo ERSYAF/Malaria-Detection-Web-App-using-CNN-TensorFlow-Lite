@@ -3,58 +3,208 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="../static/images/malaria.ico">
-  <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
-  <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet'>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../static/style.css">
   <link rel="stylesheet" href="../static/main.css">
-  <title>Deteksi Penyakit Malaria</title>
+  <title>MalariaDetect — Sistem Deteksi Cerdas</title>
 
   <script>
-    function UPLOAD(){
-      document.getElementById('uploadform').submit();
+    function UPLOAD() {
+      var overlay = document.getElementById('loadingOverlay');
+      overlay.classList.add('active');
+      setTimeout(function() {
+        document.getElementById('uploadform').submit();
+      }, 300);
+    }
 
-      var mainContent = document.getElementsByTagName('main')[0];
-      var form = document.getElementById('uploadform');
-      var loadingDiv = document.createElement('div');
-      var loadingText = document.createElement('H1');
-      loadingText.innerText = "MENGUNGGAH....";
+    function handleDragOver(e) {
+      e.preventDefault();
+      document.getElementById('dropzone').classList.add('dragover');
+    }
 
-      form.parentElement.removeChild(form);
-      loadingDiv.classList.add('containermain');
-      loadingDiv.appendChild(loadingText);
-      mainContent.appendChild(loadingDiv);
+    function handleDragLeave(e) {
+      document.getElementById('dropzone').classList.remove('dragover');
+    }
+
+    function handleDrop(e) {
+      e.preventDefault();
+      document.getElementById('dropzone').classList.remove('dragover');
+      var input = document.getElementById('images');
+      input.files = e.dataTransfer.files;
+      UPLOAD();
+    }
+
+    function previewFile(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          var preview = document.getElementById('imgPreview');
+          var placeholder = document.getElementById('dropPlaceholder');
+          preview.src = e.target.result;
+          preview.style.display = 'block';
+          placeholder.style.display = 'none';
+          document.getElementById('dropzone').classList.add('has-file');
+        };
+        reader.readAsDataURL(input.files[0]);
+        setTimeout(UPLOAD, 600);
+      }
     }
   </script>
-
 </head>
+
 <body>
 
-  <header>
-    <div id="judul">
-      <img src="../static/images/logoo.png" alt="Malaria Detector Icon" style="height: 60px;">
+  <!-- Loading Overlay -->
+  <div id="loadingOverlay" class="loading-overlay">
+    <div class="loading-box">
+      <div class="dna-loader">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <p class="loading-label">Menganalisis gambar sel darah...</p>
+      <p class="loading-sub">Mohon tunggu sebentar</p>
     </div>
-    <div id="navigasi">
-      <a href="{{ url_for('index') }}">Deteksi</a> <!-- Misalnya, jika ini untuk halaman utama -->
-      <a href="{{ url_for('dokumentasi') }}">Dokumentasi</a>
-      <a href="{{ url_for('tentang') }}">Tentang</a>
   </div>
+
+  <!-- Header -->
+  <header>
+    <div class="header-inner">
+      <div class="logo">
+        <div class="logo-mark">
+          <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="18" cy="18" r="16" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="18" cy="18" r="8" fill="currentColor" opacity="0.15"/>
+            <circle cx="18" cy="18" r="3.5" fill="currentColor"/>
+            <path d="M18 6 Q24 12 18 18 Q12 24 18 30" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.6"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-name">MalariaDetect</span>
+          <span class="logo-tag">Sistem Deteksi Cerdas</span>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="{{ url_for('index') }}" class="nav-link active">Deteksi</a>
+        <a href="{{ url_for('dokumentasi') }}" class="nav-link">Dokumentasi</a>
+        <a href="{{ url_for('tentang') }}" class="nav-link">Tim Kami</a>
+      </nav>
+
+      <div class="header-badge">
+        <span class="pulse-dot"></span>
+        Model Aktif
+      </div>
+    </div>
   </header>
 
+  <!-- Main Content -->
   <main>
-    <p id="tittlemain">Deteksi Penyakit Malaria</p>
-    <div id="submain">Unggah gambar sel darah Anda untuk mendeteksi infeksi malaria:</div>
-    <form method="post" action="" id="uploadform" enctype="multipart/form-data">
-      <label for="images" class="containermain">
-        <span class="drop-title">Seret gambar di sini atau klik untuk mengunggah</span>
-        <input type="file" name="file" id="images" accept="image/*" onchange="UPLOAD()" required>
-      </label>  
-    </form>
+
+    <div class="hero-section">
+      <div class="hero-label">
+        <svg width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="5" fill="#22c55e"/></svg>
+        Deteksi Real-time · Akurasi 95%+
+      </div>
+      <h1 class="hero-title">Deteksi Malaria<br><em>dengan Kecerdasan Buatan</em></h1>
+      <p class="hero-desc">Unggah citra mikroskopik sel darah merah untuk mendapatkan analisis infeksi malaria secara otomatis dan akurat dalam hitungan detik.</p>
+    </div>
+
+    <div class="upload-section">
+      <form method="post" action="" id="uploadform" enctype="multipart/form-data">
+        <label
+          for="images"
+          id="dropzone"
+          class="dropzone"
+          ondragover="handleDragOver(event)"
+          ondragleave="handleDragLeave(event)"
+          ondrop="handleDrop(event)"
+        >
+          <div id="dropPlaceholder" class="drop-placeholder">
+            <div class="drop-icon">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="8" y="10" width="32" height="28" rx="4" stroke="currentColor" stroke-width="1.8"/>
+                <circle cx="18" cy="20" r="3.5" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M8 32 L16 24 L22 30 L30 20 L40 32" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                <path d="M28 14 L28 8 M28 8 L25 11 M28 8 L31 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <p class="drop-title">Seret gambar ke sini</p>
+            <p class="drop-hint">atau klik untuk memilih dari perangkat Anda</p>
+            <div class="drop-formats">
+              <span>JPG</span><span>PNG</span><span>BMP</span><span>TIFF</span>
+            </div>
+          </div>
+          <img id="imgPreview" src="" alt="Preview" style="display:none;" class="img-preview"/>
+          <input
+            type="file"
+            name="file"
+            id="images"
+            accept="image/*"
+            onchange="previewFile(this)"
+            required
+          >
+        </label>
+      </form>
+    </div>
+
+    <!-- Info Cards -->
+    <div class="steps-section">
+      <div class="steps-label">Cara Kerja</div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div class="step-icon green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="17 8 12 3 7 8"/>
+              <line x1="12" y1="3" x2="12" y2="15"/>
+            </svg>
+          </div>
+          <h3>Unggah Gambar</h3>
+          <p>Foto sel darah merah dari hasil pemeriksaan mikroskop dalam format standar medis.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div class="step-icon blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <path d="M8 21h8M12 17v4"/>
+              <path d="M6 8l3 3 3-3 3 3"/>
+            </svg>
+          </div>
+          <h3>Analisis AI</h3>
+          <p>Model deep learning CNN menganalisis morfologi sel untuk mendeteksi keberadaan parasit Plasmodium.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div class="step-icon amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 11l3 3L22 4"/>
+              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+            </svg>
+          </div>
+          <h3>Hasil Diagnosis</h3>
+          <p>Laporan diagnosis lengkap dengan tingkat kepercayaan model dan rekomendasi tindak lanjut.</p>
+        </div>
+      </div>
+    </div>
+
   </main>
 
+  <!-- Footer -->
   <footer>
-    Copyright &copy; 2024. Malaria Detector. Hak Cipta Dilindungi.
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <div class="logo-mark small">
+          <svg viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="16" stroke="currentColor" stroke-width="1.5"/><circle cx="18" cy="18" r="3.5" fill="currentColor"/></svg>
+        </div>
+        <span>MalariaDetect</span>
+      </div>
+      <p class="footer-copy">Copyright &copy; 2024 MalariaDetect. Hak Cipta Dilindungi.</p>
+      <p class="footer-disc">Alat bantu diagnostik. Bukan pengganti diagnosis dokter.</p>
+    </div>
   </footer>
 
 </body>
